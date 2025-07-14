@@ -5,7 +5,7 @@ const Quote = () => {
   const [quote, setQuote] = useState<string>("");
 
   useEffect(() => {
-    axios.get("https://api.quotable.io/random")
+    axios.get("https://zenquotes.io/api/random")
       .then(res => setQuote(res.data.content))
       .catch(() => setQuote("Stay positive and productive!"));
   }, []);

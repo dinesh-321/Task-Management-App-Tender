@@ -11,21 +11,32 @@ const TaskForm = () => {
   const [dueDate, setDueDate] = useState("");
 
   const handleSubmit = useCallback(() => {
-    if (!title.trim()) return;
+  if (!title.trim()) {
+    alert("Title is required");
+    return;
+  }
+  if (!description.trim()) {
+    alert("Description is required");
+    return;
+  }
+  if (!dueDate.trim()) {
+    alert("Due date is required");
+    return;
+  }
 
-    const newTask: Task = {
-      id: uuidv4(),
-      title,
-      description,
-      dueDate,
-      completed: false
-    };
+  const newTask: Task = {
+    id: uuidv4(),
+    title,
+    description,
+    dueDate,
+    completed: false
+  };
 
-    addTask(newTask);
-    setTitle("");
-    setDescription("");
-    setDueDate("");
-  }, [title, description, dueDate, addTask]);
+  addTask(newTask);
+  setTitle("");
+  setDescription("");
+  setDueDate("");
+}, [title, description, dueDate, addTask]);
 
   return (
     <div className="space-y-2">
